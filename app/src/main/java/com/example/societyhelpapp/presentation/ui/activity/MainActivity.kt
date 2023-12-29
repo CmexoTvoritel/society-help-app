@@ -1,9 +1,10 @@
-package com.example.societyhelpapp
+package com.example.societyhelpapp.presentation.ui.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import com.example.societyhelpapp.R
 import com.example.societyhelpapp.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
