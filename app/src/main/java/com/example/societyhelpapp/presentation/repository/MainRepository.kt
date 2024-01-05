@@ -2,7 +2,7 @@ package com.example.societyhelpapp.presentation.repository
 
 import android.content.Context
 import android.util.Log
-import com.example.societyhelpapp.data.model.Topic
+import com.example.societyhelpapp.data.model.main.Topic
 import com.example.societyhelpapp.presentation.ui.fragments.information.model.InformationModel
 import com.example.societyhelpapp.presentation.ui.fragments.information.model.InformationType
 import dagger.hilt.android.qualifiers.ActivityContext
@@ -23,6 +23,7 @@ class MainRepository @Inject constructor(
 ) {
 
     private var _allInformation = MutableSharedFlow<List<Topic>>()
+    private var informationList = listOf<Topic>()
     val allInformation = _allInformation.asSharedFlow()
 
     private var _information: Topic? = null
@@ -43,16 +44,27 @@ class MainRepository @Inject constructor(
         return getInformationData()
     }
 
+    fun filterInformation(query: String): List<Topic> {
+        val filteredList = mutableListOf<Topic>()
+        informationList.map {
+            if(it.title.contains(query, true)) filteredList.add(it)
+        }
+        return filteredList
+    }
+
     private fun getInformationData(): List<InformationModel> {
         return if(information != null) {
             val answer = mutableListOf<InformationModel>()
+            var numOfSubtitle = 1
             information!!.subtitles.forEach { subtitle ->
-                answer.add(InformationModel(type = InformationType.SUBTITLE, text = subtitle.subtitle))
+                val textSubtitle = "$numOfSubtitle. " + subtitle.subtitle
+                answer.add(InformationModel(type = InformationType.SUBTITLE, text = textSubtitle))
                 if(subtitle.listOfDesc != null) {
                     subtitle.listOfDesc.forEach { description ->
                         answer.add(InformationModel(type = InformationType.DESCRIPTION, text = description.description))
                     }
                 }
+                numOfSubtitle++
             }
             answer
         } else {
@@ -65,6 +77,7 @@ class MainRepository @Inject constructor(
             val inputStream = context.assets.open("information.json")
             val json = inputStream.bufferedReader().use { it.readText() }
             val topics: List<Topic> = Json.decodeFromString<List<Topic>>(json)
+            informationList = topics
             _allInformation.emit(topics)
         } catch (e: Exception) {
             Log.e("JSON error", "${e.message}")

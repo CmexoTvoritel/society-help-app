@@ -7,15 +7,44 @@
     tools:context=".presentation.ui.fragments.main.MainFragment"
     android:background="@color/white">
 
+    <RelativeLayout
+        android:id="@+id/amContainerSearchView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <EditText
+            android:id="@+id/amSearchEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/search_edittext_bg"
+            android:drawableStart="@drawable/ic_search"
+            android:drawablePadding="8dp"
+            android:hint="Поиск"
+            android:imeOptions="actionSearch"
+            android:inputType="text"
+            android:padding="12dp"
+            android:textColor="#333333"
+            android:textSize="16sp" />
+
+    </RelativeLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/mfRVTopics"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:itemCount="10"
-        tools:listitem="@layout/item_topic"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/amContainerSearchView"
+        tools:itemCount="10"
+        tools:listitem="@layout/item_topic" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,10 +1,11 @@
 package com.example.societyhelpapp.presentation.ui.fragments.information
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.societyhelpapp.databinding.FragmentInformationBinding
 import com.example.societyhelpapp.presentation.ui.adapter.InformationAdapter
@@ -13,9 +14,9 @@ import com.example.societyhelpapp.presentation.ui.fragments.information.model.In
 import com.example.societyhelpapp.presentation.ui.fragments.information.model.InformationUIEvent
 import com.example.societyhelpapp.presentation.ui.fragments.information.viewmodel.InformationViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -39,8 +40,8 @@ class InformationFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupRV()
-        setupState()
         setupActions()
+        setupState()
     }
 
     private fun setupState() = binding.apply {
@@ -53,15 +54,18 @@ class InformationFragment : Fragment() {
     }
 
     private fun setupActions() {
-        CoroutineScope(Dispatchers.IO).launch {
+        lifecycleScope.launch {
             viewModel.actions.collect { action ->
-                when(action) {
-                    is InformationUIAction.LoadInformation -> loadInformation(
-                        information = action.information
-                    )
-                    is InformationUIAction.LoadTitle -> loadTitle(
-                        title = action.title
-                    )
+                withContext(Dispatchers.Main) {
+                    when (action) {
+                        is InformationUIAction.LoadInformation -> loadInformation(
+                            information = action.information
+                        )
+
+                        is InformationUIAction.LoadTitle -> loadTitle(
+                            title = action.title
+                        )
+                    }
                 }
             }
         }

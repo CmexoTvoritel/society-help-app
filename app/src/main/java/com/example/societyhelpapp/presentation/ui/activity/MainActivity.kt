@@ -2,12 +2,10 @@ package com.example.societyhelpapp.presentation.ui.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.navigation.NavController
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.societyhelpapp.R
 import com.example.societyhelpapp.databinding.ActivityMainBinding
@@ -30,15 +28,24 @@ class MainActivity : AppCompatActivity() {
         setupBottomBar()
     }
 
-    private fun setupNavGraph() {
+    private fun setupNavGraph() = binding.apply {
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
         navController = navHostFragment.navController
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when(destination.id) {
+                R.id.informationFragment -> {
+                    amBottomNavigation.visibility = View.GONE
+                }
+                R.id.mainFragment -> {
+                    amBottomNavigation.visibility = View.VISIBLE
+                }
+            }
+        }
     }
 
     private fun setupToolbar() = binding.apply {
-        setSupportActionBar(amToolbar)
-        appBarConfiguration = AppBarConfiguration(navController.graph, null)
-        setupActionBarWithNavController(navController, appBarConfiguration)
+        appBarConfiguration = AppBarConfiguration(navController.graph)
+        amToolbar.setupWithNavController(navController, appBarConfiguration)
     }
 
     private fun setupBottomBar() = binding.apply {
@@ -46,6 +53,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
+        return navController.navigateUp()
     }
 }

@@ -2,7 +2,7 @@ package com.example.societyhelpapp.presentation.ui.viewholder
 
 
 import androidx.recyclerview.widget.RecyclerView
-import com.example.societyhelpapp.data.model.Topic
+import com.example.societyhelpapp.data.model.main.Topic
 import com.example.societyhelpapp.databinding.ItemTopicBinding
 
 class TopicViewHolder(private val binding: ItemTopicBinding): RecyclerView.ViewHolder(binding.root) {

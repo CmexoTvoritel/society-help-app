@@ -9,7 +9,7 @@ class InformationDiffCallback: DiffUtil.ItemCallback<InformationModel>() {
     }
 
     override fun areContentsTheSame(oldItem: InformationModel, newItem: InformationModel): Boolean {
-        return newItem.text == oldItem.text
-                && newItem.type == oldItem.type
+        return (newItem.text == oldItem.text
+                && newItem.type == oldItem.type)
     }
 }

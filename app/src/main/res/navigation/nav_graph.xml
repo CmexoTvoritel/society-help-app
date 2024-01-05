@@ -18,7 +18,11 @@
         android:id="@+id/informationFragment"
         android:name="com.example.societyhelpapp.presentation.ui.fragments.information.InformationFragment"
         android:label="Подробнее"
-        tools:layout="@layout/fragment_information" />
+        tools:layout="@layout/fragment_information" >
+        <action
+            android:id="@+id/action_informationFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
     <fragment
         android:id="@+id/constitutionFragment"
         android:name="com.example.societyhelpapp.presentation.ui.fragments.constitution.ConstitutionFragment"

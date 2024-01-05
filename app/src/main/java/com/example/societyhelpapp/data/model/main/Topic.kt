@@ -1,4 +1,4 @@
-package com.example.societyhelpapp.data.model
+package com.example.societyhelpapp.data.model.main
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

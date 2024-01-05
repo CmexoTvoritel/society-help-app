@@ -1,4 +1,4 @@
-package com.example.societyhelpapp.data.model
+package com.example.societyhelpapp.data.model.constitution
 
 import kotlinx.serialization.Serializable
 

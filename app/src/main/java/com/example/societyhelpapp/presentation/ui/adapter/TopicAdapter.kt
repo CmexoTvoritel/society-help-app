@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.societyhelpapp.data.model.Topic
+import com.example.societyhelpapp.data.model.main.Topic
 import com.example.societyhelpapp.databinding.ItemTopicBinding
 import com.example.societyhelpapp.presentation.ui.diffutil.TopicDiffCallback
 import com.example.societyhelpapp.presentation.ui.viewholder.TopicViewHolder

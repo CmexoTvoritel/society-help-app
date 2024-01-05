@@ -9,6 +9,7 @@ import com.example.societyhelpapp.databinding.ItemInfoBinding
 import com.example.societyhelpapp.databinding.ItemInfoDescBinding
 import com.example.societyhelpapp.presentation.ui.diffutil.InformationDiffCallback
 import com.example.societyhelpapp.presentation.ui.fragments.information.model.InformationModel
+import com.example.societyhelpapp.presentation.ui.fragments.information.model.InformationType
 import com.example.societyhelpapp.presentation.ui.viewholder.InformationDescViewHolder
 import com.example.societyhelpapp.presentation.ui.viewholder.InformationViewHolder
 
@@ -40,5 +41,12 @@ class InformationAdapter: ListAdapter<InformationModel, RecyclerView.ViewHolder>
         else if(holder is InformationDescViewHolder) {
             holder.bind(item = currentList[position])
         }
+    }
+
+    override fun getItemViewType(position: Int): Int {
+        return if(currentList[position].type == InformationType.SUBTITLE)
+            R.layout.item_info
+        else
+            R.layout.item_info_desc
     }
 }

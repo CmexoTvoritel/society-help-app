@@ -1,7 +1,7 @@
 package com.example.societyhelpapp.presentation.ui.fragments.main.viewmodel
 
 import androidx.lifecycle.ViewModel
-import com.example.societyhelpapp.data.model.Topic
+import com.example.societyhelpapp.data.model.main.Topic
 import com.example.societyhelpapp.presentation.repository.MainRepository
 import com.example.societyhelpapp.presentation.ui.fragments.main.model.UIAction
 import com.example.societyhelpapp.presentation.ui.fragments.main.model.UIEvent
@@ -41,10 +41,16 @@ class MainViewModel @Inject constructor(
         sendViewAction(action = UIAction.NavigateInformation)
     }
 
+    private fun filterChanged(query: String) {
+        val answer = repository.filterInformation(query = query)
+        sendViewAction(action = UIAction.ListChanged(topics = answer))
+    }
+
     fun obtainEvent(viewEvent: UIEvent) {
         when(viewEvent) {
             is UIEvent.LoadInformation -> loadInformation()
             is UIEvent.OpenInformation -> openInformation(topic = viewEvent.topic)
+            is UIEvent.FilterChanged -> filterChanged(query = viewEvent.query)
         }
     }
 

@@ -1,7 +1,7 @@
 package com.example.societyhelpapp.presentation.ui.diffutil
 
 import androidx.recyclerview.widget.DiffUtil
-import com.example.societyhelpapp.data.model.Topic
+import com.example.societyhelpapp.data.model.main.Topic
 
 class TopicDiffCallback: DiffUtil.ItemCallback<Topic>() {
     override fun areItemsTheSame(oldItem: Topic, newItem: Topic): Boolean {
