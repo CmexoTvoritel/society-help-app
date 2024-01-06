@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.societyhelpapp.R
 import com.example.societyhelpapp.data.model.main.Topic
 import com.example.societyhelpapp.databinding.FragmentMainBinding
+import com.example.societyhelpapp.domain.repeatOnStarted
 import com.example.societyhelpapp.presentation.ui.adapter.TopicAdapter
 import com.example.societyhelpapp.presentation.ui.fragments.main.model.UIAction
 import com.example.societyhelpapp.presentation.ui.fragments.main.model.UIEvent
@@ -77,15 +78,19 @@ class MainFragment : Fragment() {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) { }
 
             override fun onTextChanged(text: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                amSearchClear.visibility = if(text.toString() == "") View.GONE else View.VISIBLE
                 viewModel.obtainEvent(viewEvent = UIEvent.FilterChanged(query = text.toString()))
             }
 
             override fun afterTextChanged(p0: Editable?) { }
 
         })
-        CoroutineScope(Dispatchers.Main).launch {
+        amSearchClear.setOnClickListener {
+            amSearchEditText.setText("")
+        }
+        repeatOnStarted {
             viewModel.actions.collect { action ->
-                when(action) {
+                when (action) {
                     is UIAction.NavigateInformation -> findNavController().navigate(R.id.informationFragment)
                     is UIAction.ListChanged -> listChanged(changedList = action.topics)
                 }

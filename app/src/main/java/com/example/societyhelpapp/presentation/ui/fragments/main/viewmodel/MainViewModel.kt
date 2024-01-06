@@ -1,6 +1,7 @@
 package com.example.societyhelpapp.presentation.ui.fragments.main.viewmodel
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.societyhelpapp.data.model.main.Topic
 import com.example.societyhelpapp.presentation.repository.MainRepository
 import com.example.societyhelpapp.presentation.ui.fragments.main.model.UIAction
@@ -25,7 +26,7 @@ class MainViewModel @Inject constructor(
     val actions = _actions.asSharedFlow()
 
     init {
-        CoroutineScope(Dispatchers.IO).launch {
+        viewModelScope.launch {
             repository.allInformation.collect {
                 _allInformation.emit(it)
             }
@@ -55,7 +56,7 @@ class MainViewModel @Inject constructor(
     }
 
     private fun sendViewAction(action: UIAction) {
-        CoroutineScope(Dispatchers.IO).launch {
+        viewModelScope.launch {
             _actions.emit(action)
         }
     }

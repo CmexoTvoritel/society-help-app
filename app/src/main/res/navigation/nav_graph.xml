@@ -27,10 +27,19 @@
         android:id="@+id/constitutionFragment"
         android:name="com.example.societyhelpapp.presentation.ui.fragments.constitution.ConstitutionFragment"
         android:label="Конституция"
-        tools:layout="@layout/fragment_constitution" />
+        tools:layout="@layout/fragment_constitution" >
+        <action
+            android:id="@+id/action_constitutionFragment_to_constitutionInfoFragment"
+            app:destination="@id/constitutionInfoFragment" />
+    </fragment>
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.example.societyhelpapp.presentation.ui.fragments.settings.SettingsFragment"
         android:label="Настройки"
         tools:layout="@layout/fragment_settings" />
+    <fragment
+        android:id="@+id/constitutionInfoFragment"
+        android:name="com.example.societyhelpapp.presentation.ui.fragments.constitutioninformation.ConstitutionInfoFragment"
+        android:label="Подробнее"
+        tools:layout="@layout/fragment_constitution_information" />
 </navigation>

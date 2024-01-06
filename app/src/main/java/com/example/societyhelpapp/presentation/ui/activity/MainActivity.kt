@@ -3,6 +3,7 @@ package com.example.societyhelpapp.presentation.ui.activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
@@ -21,6 +22,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setupNavGraph()
@@ -39,6 +41,17 @@ class MainActivity : AppCompatActivity() {
                 R.id.mainFragment -> {
                     amBottomNavigation.visibility = View.VISIBLE
                 }
+                R.id.settingsFragment -> {
+                    amBottomNavigation.visibility = View.VISIBLE
+                    supportActionBar?.setDisplayHomeAsUpEnabled(false)
+                }
+                R.id.constitutionFragment -> {
+                    amBottomNavigation.visibility = View.VISIBLE
+                    supportActionBar?.setDisplayHomeAsUpEnabled(false)
+                }
+                R.id.constitutionInfoFragment -> {
+                    amBottomNavigation.visibility = View.GONE
+                }
             }
         }
     }
@@ -53,6 +66,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        return navController.navigateUp()
+        return navController.navigateUp() || super.onSupportNavigateUp()
     }
 }
