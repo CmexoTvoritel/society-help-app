@@ -4,6 +4,9 @@ import android.content.Context
 import android.util.Log
 import com.example.societyhelpapp.data.model.constitution.Subtitle
 import com.example.societyhelpapp.data.model.constitution.Topic
+import com.example.societyhelpapp.presentation.helpers.SpannableHelper
+import com.example.societyhelpapp.presentation.ui.fragments.constitution.model.topic.DescriptionUI
+import com.example.societyhelpapp.presentation.ui.fragments.constitution.model.topic.SubtitleUI
 import com.example.societyhelpapp.presentation.ui.fragments.information.model.InformationModel
 import com.example.societyhelpapp.presentation.ui.fragments.information.model.InformationType
 import dagger.hilt.android.qualifiers.ActivityContext
@@ -20,15 +23,16 @@ import javax.inject.Inject
 
 @ActivityScoped
 class ConstitutionRepository @Inject constructor(
-    @ActivityContext private val context: Context
+    @ActivityContext private val context: Context,
+    private val spannableHelper: SpannableHelper
 ) {
 
     private var _constitutions = MutableSharedFlow<List<Any>>()
     private var informationList = mutableListOf<Any>()
     val constitutions = _constitutions.asSharedFlow()
 
-    private var _information: Subtitle? = null
-    val information: Subtitle?
+    private var _information: SubtitleUI? = null
+    val information: SubtitleUI?
         get() = _information
 
     fun getListOfTopics() {
@@ -55,14 +59,15 @@ class ConstitutionRepository @Inject constructor(
             emptyList()
     }
 
-    fun setOpenInformation(subtitle: Subtitle) {
+    fun setOpenInformation(subtitle: SubtitleUI) {
         _information = subtitle
     }
 
     fun filterInformation(query: String): List<Any> {
         val filteredList = mutableListOf<Any>()
+        informationList = spannableHelper.highlightConstitution(query = query, itemsList = informationList)
         informationList.map {
-            if(it is Subtitle) {
+            if(it is SubtitleUI) {
                 if(it.subtitle.contains(query, true)) filteredList.add(it)
             }
         }
@@ -78,13 +83,20 @@ class ConstitutionRepository @Inject constructor(
             topics.forEach { topic ->
                 informationList.add(topic)
                 topic.subtitles.forEach { subtitle ->
-                    informationList.add(subtitle)
+                    informationList.add(mapConstitutionToUI(subtitle = subtitle))
                 }
             }
             _constitutions.emit(informationList)
         } catch (e: Exception) {
             Log.e("JSON error", "${e.message}")
         }
+    }
+
+    private fun mapConstitutionToUI(subtitle: Subtitle): SubtitleUI {
+        val listOfDesc = subtitle.listOfDesc?.map { desc ->
+            DescriptionUI(description = desc.description)
+        } ?: emptyList()
+        return SubtitleUI(subtitle.subtitle, listOfDesc)
     }
 
 }

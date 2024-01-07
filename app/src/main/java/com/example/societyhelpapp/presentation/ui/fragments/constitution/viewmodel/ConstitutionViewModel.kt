@@ -2,10 +2,10 @@ package com.example.societyhelpapp.presentation.ui.fragments.constitution.viewmo
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.societyhelpapp.data.model.constitution.Subtitle
 import com.example.societyhelpapp.presentation.repository.ConstitutionRepository
 import com.example.societyhelpapp.presentation.ui.fragments.constitution.model.ConstitutionAction
 import com.example.societyhelpapp.presentation.ui.fragments.constitution.model.ConstitutionEvent
+import com.example.societyhelpapp.presentation.ui.fragments.constitution.model.topic.SubtitleUI
 import dagger.hilt.android.scopes.FragmentScoped
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
@@ -35,7 +35,7 @@ class ConstitutionViewModel @Inject constructor(
         repository.getListOfTopics()
     }
 
-    private fun itemClicked(subtitle: Subtitle) {
+    private fun itemClicked(subtitle: SubtitleUI) {
         repository.setOpenInformation(subtitle = subtitle)
         sendViewAction(action = ConstitutionAction.Navigate)
     }

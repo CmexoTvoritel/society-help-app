@@ -16,6 +16,7 @@ import com.example.societyhelpapp.domain.repeatOnStarted
 import com.example.societyhelpapp.presentation.ui.adapter.TopicAdapter
 import com.example.societyhelpapp.presentation.ui.fragments.main.model.UIAction
 import com.example.societyhelpapp.presentation.ui.fragments.main.model.UIEvent
+import com.example.societyhelpapp.presentation.ui.fragments.main.model.topic.TopicUI
 import com.example.societyhelpapp.presentation.ui.fragments.main.viewmodel.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
@@ -69,7 +70,7 @@ class MainFragment : Fragment() {
         }
     }
 
-    private fun listChanged(changedList: List<Topic>) {
+    private fun listChanged(changedList: List<TopicUI>) {
         adapter.submitList(changedList)
     }
 

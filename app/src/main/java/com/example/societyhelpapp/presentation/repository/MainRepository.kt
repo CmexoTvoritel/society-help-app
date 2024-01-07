@@ -3,8 +3,12 @@ package com.example.societyhelpapp.presentation.repository
 import android.content.Context
 import android.util.Log
 import com.example.societyhelpapp.data.model.main.Topic
+import com.example.societyhelpapp.presentation.helpers.SpannableHelper
 import com.example.societyhelpapp.presentation.ui.fragments.information.model.InformationModel
 import com.example.societyhelpapp.presentation.ui.fragments.information.model.InformationType
+import com.example.societyhelpapp.presentation.ui.fragments.main.model.topic.DescriptionUI
+import com.example.societyhelpapp.presentation.ui.fragments.main.model.topic.SubtitleUI
+import com.example.societyhelpapp.presentation.ui.fragments.main.model.topic.TopicUI
 import dagger.hilt.android.qualifiers.ActivityContext
 import dagger.hilt.android.scopes.ActivityScoped
 import kotlinx.coroutines.CoroutineScope
@@ -19,15 +23,16 @@ import javax.inject.Inject
 
 @ActivityScoped
 class MainRepository @Inject constructor(
-    @ActivityContext private val context: Context
+    @ActivityContext private val context: Context,
+    private val spannableHelper: SpannableHelper
 ) {
 
-    private var _allInformation = MutableSharedFlow<List<Topic>>()
-    private var informationList = listOf<Topic>()
+    private var _allInformation = MutableSharedFlow<List<TopicUI>>()
+    private var informationList = listOf<TopicUI>()
     val allInformation = _allInformation.asSharedFlow()
 
-    private var _information: Topic? = null
-    val information: Topic?
+    private var _information: TopicUI? = null
+    val information: TopicUI?
         get() = _information
 
     fun getListOfTopics() {
@@ -36,7 +41,7 @@ class MainRepository @Inject constructor(
         }
     }
 
-    fun setOpenInformation(topic: Topic) {
+    fun setOpenInformation(topic: TopicUI) {
         _information = topic
     }
 
@@ -44,8 +49,9 @@ class MainRepository @Inject constructor(
         return getInformationData()
     }
 
-    fun filterInformation(query: String): List<Topic> {
-        val filteredList = mutableListOf<Topic>()
+    fun filterInformation(query: String): List<TopicUI> {
+        val filteredList = mutableListOf<TopicUI>()
+        informationList = spannableHelper.highlightMain(query = query, itemsList = informationList)
         informationList.map {
             if(it.title.contains(query, true)) filteredList.add(it)
         }
@@ -77,10 +83,27 @@ class MainRepository @Inject constructor(
             val inputStream = context.assets.open("information.json")
             val json = inputStream.bufferedReader().use { it.readText() }
             val topics: List<Topic> = Json.decodeFromString<List<Topic>>(json)
-            informationList = topics
-            _allInformation.emit(topics)
+            val needList = mapTopicToUI(topicList = topics)
+            informationList = needList
+            _allInformation.emit(needList)
         } catch (e: Exception) {
             Log.e("JSON error", "${e.message}")
         }
+    }
+
+    private fun mapTopicToUI(
+        topicList: List<Topic>
+    ): List<TopicUI> = topicList.map { topicToTopicUI(it) }
+
+    private fun topicToTopicUI(topic: Topic): TopicUI {
+        val subtitleUIList = topic.subtitles.map { subtitle ->
+            SubtitleUI(
+                subtitle.subtitle,
+                subtitle.listOfDesc?.map { desc ->
+                    DescriptionUI(desc.description)
+                } ?: emptyList()
+            )
+        }
+        return TopicUI(topic.title, subtitleUIList)
     }
 }

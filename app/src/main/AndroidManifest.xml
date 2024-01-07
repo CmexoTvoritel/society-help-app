@@ -8,13 +8,14 @@
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:name=".App"
         android:theme="@style/Theme.Societyhelpapp"
         tools:targetApi="31">
         <activity
             android:name=".presentation.ui.activity.MainActivity"
+            android:theme="@style/Base.Theme.Societyhelpapp.Launcher"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

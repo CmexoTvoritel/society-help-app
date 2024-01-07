@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.societyhelpapp.R
 import com.example.societyhelpapp.databinding.ActivityMainBinding
@@ -21,6 +22,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(R.style.Base_Theme_Societyhelpapp)
         super.onCreate(savedInstanceState)
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -33,6 +35,16 @@ class MainActivity : AppCompatActivity() {
     private fun setupNavGraph() = binding.apply {
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
         navController = navHostFragment.navController
+    }
+
+    private fun setupToolbar() = binding.apply {
+        setSupportActionBar(amToolbar)
+        appBarConfiguration = AppBarConfiguration(navController.graph)
+        setupActionBarWithNavController(navController, appBarConfiguration)
+    }
+
+    private fun setupBottomBar() = binding.apply {
+        amBottomNavigation.setupWithNavController(navController)
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when(destination.id) {
                 R.id.informationFragment -> {
@@ -54,15 +66,6 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
-    }
-
-    private fun setupToolbar() = binding.apply {
-        appBarConfiguration = AppBarConfiguration(navController.graph)
-        amToolbar.setupWithNavController(navController, appBarConfiguration)
-    }
-
-    private fun setupBottomBar() = binding.apply {
-        amBottomNavigation.setupWithNavController(navController)
     }
 
     override fun onSupportNavigateUp(): Boolean {

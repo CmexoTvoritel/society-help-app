@@ -1,15 +1,17 @@
 package com.example.societyhelpapp.presentation.ui.diffutil
 
+import android.graphics.Color
+import android.text.Spannable
+import android.text.style.ForegroundColorSpan
 import androidx.recyclerview.widget.DiffUtil
-import com.example.societyhelpapp.data.model.main.Topic
+import com.example.societyhelpapp.presentation.ui.fragments.main.model.topic.TopicUI
 
-class TopicDiffCallback: DiffUtil.ItemCallback<Topic>() {
-    override fun areItemsTheSame(oldItem: Topic, newItem: Topic): Boolean {
-        return oldItem.title == newItem.title
+class TopicDiffCallback: DiffUtil.ItemCallback<TopicUI>() {
+    override fun areItemsTheSame(oldItem: TopicUI, newItem: TopicUI): Boolean {
+        return oldItem == newItem
     }
 
-    override fun areContentsTheSame(oldItem: Topic, newItem: Topic): Boolean {
-        return oldItem.subtitles[0] == newItem.subtitles[0] &&
-                oldItem.title == newItem.title
+    override fun areContentsTheSame(oldItem: TopicUI, newItem: TopicUI): Boolean {
+        return false
     }
 }

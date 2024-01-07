@@ -4,14 +4,14 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.societyhelpapp.data.model.main.Topic
 import com.example.societyhelpapp.databinding.ItemTopicBinding
 import com.example.societyhelpapp.presentation.ui.diffutil.TopicDiffCallback
+import com.example.societyhelpapp.presentation.ui.fragments.main.model.topic.TopicUI
 import com.example.societyhelpapp.presentation.ui.viewholder.TopicViewHolder
 
-class TopicAdapter: ListAdapter<Topic, RecyclerView.ViewHolder>(TopicDiffCallback()) {
+class TopicAdapter: ListAdapter<TopicUI, RecyclerView.ViewHolder>(TopicDiffCallback()) {
 
-    var clickCallback: ((item: Topic) -> Unit)? = null
+    var clickCallback: ((item: TopicUI) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return TopicViewHolder(

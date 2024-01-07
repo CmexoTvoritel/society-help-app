@@ -24,7 +24,7 @@ class InformationViewModel @Inject constructor(
         val information = repository.getInformation()
         sendViewAction(action = InformationUIAction.LoadInformation(information = information))
         if(repository.information != null) {
-            sendViewAction(action = InformationUIAction.LoadTitle(title = repository.information!!.title))
+            sendViewAction(action = InformationUIAction.LoadTitle(title = repository.information!!.title.toString()))
         }
     }
 

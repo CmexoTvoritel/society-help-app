@@ -13,7 +13,8 @@ class ConstitutionDiffCallback: DiffUtil.ItemCallback<Any>() {
         return if(oldItem is Topic && newItem is Topic) {
             oldItem.title == newItem.title && oldItem.subtitles == newItem.subtitles
         } else if (oldItem is Subtitle && newItem is Subtitle)
-            oldItem.subtitle == newItem.subtitle && oldItem.listOfDesc == newItem.listOfDesc
+            return false
+            //oldItem.subtitle == newItem.subtitle && oldItem.listOfDesc == newItem.listOfDesc
         else
             false
     }

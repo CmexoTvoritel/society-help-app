@@ -10,12 +10,13 @@ import com.example.societyhelpapp.data.model.constitution.Topic
 import com.example.societyhelpapp.databinding.ItemConstitutionBinding
 import com.example.societyhelpapp.databinding.ItemConstitutionHeaderBinding
 import com.example.societyhelpapp.presentation.ui.diffutil.ConstitutionDiffCallback
+import com.example.societyhelpapp.presentation.ui.fragments.constitution.model.topic.SubtitleUI
 import com.example.societyhelpapp.presentation.ui.viewholder.ConstitutionHeaderViewHolder
 import com.example.societyhelpapp.presentation.ui.viewholder.ConstitutionViewHolder
 
 class ConstitutionAdapter: ListAdapter<Any, RecyclerView.ViewHolder>(ConstitutionDiffCallback()) {
 
-    var clickCallback: ((item: Subtitle) -> Unit)? = null
+    var clickCallback: ((item: SubtitleUI) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when(viewType) {
@@ -42,7 +43,7 @@ class ConstitutionAdapter: ListAdapter<Any, RecyclerView.ViewHolder>(Constitutio
             holder.bind(item = currentList[position] as Topic)
         }
         if(holder is ConstitutionViewHolder) {
-            holder.bind(item = currentList[position] as Subtitle)
+            holder.bind(item = currentList[position] as SubtitleUI)
             holder.clickCallback = clickCallback
         }
     }

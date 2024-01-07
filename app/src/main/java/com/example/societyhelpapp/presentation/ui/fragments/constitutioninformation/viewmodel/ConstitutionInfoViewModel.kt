@@ -23,7 +23,7 @@ class ConstitutionInfoViewModel @Inject constructor(
         val answer = repository.getInformation()
         sendViewAction(action = ConstitutionInfoAction.SendInformation(information = answer))
         if(repository.information != null)
-            sendViewAction(action = ConstitutionInfoAction.LoadTitle(title = repository.information!!.subtitle))
+            sendViewAction(action = ConstitutionInfoAction.LoadTitle(title = repository.information!!.subtitle.toString()))
     }
 
     fun obtainEvent(viewEvent: ConstitutionInfoEvent) {
