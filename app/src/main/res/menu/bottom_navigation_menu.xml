@@ -5,13 +5,19 @@
         android:id="@+id/mainFragment"
         android:enabled="true"
         android:icon="@drawable/ic_main"
-        android:title="Шпоры"/>
+        android:title="Шпоры" />
 
     <item
         android:id="@+id/constitutionFragment"
         android:enabled="true"
         android:icon="@drawable/ic_constitution"
         android:title="Конституция"/>
+
+    <item
+        android:id="@+id/functionFragment"
+        android:enabled="true"
+        android:icon="@drawable/ic_functions"
+        android:title="Функции"/>
 
     <item
         android:id="@+id/settingsFragment"

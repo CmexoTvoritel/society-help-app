@@ -42,4 +42,18 @@
         android:name="com.example.societyhelpapp.presentation.ui.fragments.constitutioninformation.ConstitutionInfoFragment"
         android:label="Подробнее"
         tools:layout="@layout/fragment_constitution_information" />
+    <fragment
+        android:id="@+id/functionFragment"
+        android:name="com.example.societyhelpapp.presentation.ui.fragments.functions.FunctionFragment"
+        android:label="Функции"
+        tools:layout="@layout/fragment_function" >
+        <action
+            android:id="@+id/action_functionFragment_to_functionInfoFragment"
+            app:destination="@id/functionInfoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/functionInfoFragment"
+        android:name="com.example.societyhelpapp.presentation.ui.fragments.functionsinformation.FunctionInfoFragment"
+        android:label="Подробнее"
+        tools:layout="@layout/fragment_function_info" />
 </navigation>

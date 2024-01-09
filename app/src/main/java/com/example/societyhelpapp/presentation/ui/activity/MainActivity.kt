@@ -64,6 +64,13 @@ class MainActivity : AppCompatActivity() {
                 R.id.constitutionInfoFragment -> {
                     amBottomNavigation.visibility = View.GONE
                 }
+                R.id.functionFragment -> {
+                    amBottomNavigation.visibility = View.VISIBLE
+                    supportActionBar?.setDisplayHomeAsUpEnabled(false)
+                }
+                R.id.functionInfoFragment -> {
+                    amBottomNavigation.visibility = View.GONE
+                }
             }
         }
     }

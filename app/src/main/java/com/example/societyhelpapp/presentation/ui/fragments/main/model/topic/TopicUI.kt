@@ -7,5 +7,8 @@ data class TopicUI(
     val title: Spannable,
     val subtitles: List<SubtitleUI>
 ) {
-    constructor(title: String, subtitles: List<SubtitleUI>) : this(SpannableString(title), subtitles)
+    constructor(
+        title: String,
+        subtitles: List<SubtitleUI>
+    ) : this(title = SpannableString(title), subtitles = subtitles)
 }

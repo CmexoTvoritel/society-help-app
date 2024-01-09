@@ -1,0 +1,284 @@
+[
+  {
+    "functionName": "Функция права",
+    "listOfDesc": [
+      {"description":  "Регулятивная"},
+      {"description":  "Охранительная"},
+      {"description":  "Воспитательная"},
+      {"description":  "Оценочная"},
+      {"description":  "Социального контроля"}
+    ]
+  },
+  {
+    "functionName": "Функция семьи",
+    "listOfDesc": [
+      {"description":  "Репродуктивная"},
+      {"description":  "Социализации"},
+      {"description":  "Психологическая поддержка"},
+      {"description":  "Досуговая"},
+      {"description":  "Первичный социальный контроль"},
+      {"description":  "Статусная"},
+      {"description":  "Хозяйственная"}
+    ]
+  },
+  {
+    "functionName": "Функция практики",
+    "listOfDesc": [
+      {"description":  "Источник познания"},
+      {"description":  "Основа познания"},
+      {"description":  "Цель познания"},
+      {"description":  "Критерий истины"}
+    ]
+  },
+  {
+    "functionName": "Функция общения",
+    "listOfDesc": [
+      {"description":  "Социализации"},
+      {"description":  "Познавательная"},
+      {"description":  "Психологическая"},
+      {"description":  "Организационная"}
+    ]
+  },
+  {
+    "functionName": "Функция общества",
+    "listOfDesc": [
+      {"description":  "Воспроизводство человека"},
+      {"description":  "Социализация"},
+      {"description":  "Производство материальных благ"},
+      {"description":  "Регулирование деятельности людей"},
+      {"description":  "Распределение продуктов труда"}
+    ]
+  },
+  {
+    "functionName": "Функция институтов общества",
+    "listOfDesc": [
+      {"description":  "Социализация"},
+      {"description":  "Удовлетворение потребностей"},
+      {"description":  "Коммуникативная"},
+      {"description":  "Регулирующая"},
+      {"description":  "Защитная"}
+    ]
+  },
+  {
+    "functionName": "Функция культуры",
+    "listOfDesc": [
+      {"description":  "Оценочная"},
+      {"description":  "Регулятивная"},
+      {"description":  "Информативная"},
+      {"description":  "Коммуникативная"},
+      {"description":  "Социализации"},
+      {"description":  "Познавательная"}
+    ]
+  },
+  {
+    "functionName": "Функция науки",
+    "listOfDesc": [
+      {"description":  "Культурная"},
+      {"description":  "Мировоззренческая"},
+      {"description":  "Познавательно-объяснительная"},
+      {"description":  "Прогностическая"}
+    ]
+  },
+  {
+    "functionName": "Функция образования",
+    "listOfDesc": [
+      {"description":  "Экономическая"},
+      {"description":  "Социальная"},
+      {"description":  "Культурная"}
+    ]
+  },
+  {
+    "functionName": "Функция религии",
+    "listOfDesc": [
+      {"description":  "Мировоззренческая"},
+      {"description":  "Терапевтическая"},
+      {"description":  "Коммуникативная"},
+      {"description":  "Регулятивная"}
+    ]
+  },
+  {
+    "functionName": "Функция искусства",
+    "listOfDesc": [
+      {"description":  "Воспитательная"},
+      {"description":  "Утешительная"},
+      {"description":  "Эстетическая"},
+      {"description":  "Внушающая"}
+    ]
+  },
+  {
+    "functionName": "Функция морали",
+    "listOfDesc": [
+      {"description":  "Регулятивная"},
+      {"description":  "Мотивационная"},
+      {"description":  "Ценностная"}
+    ]
+  },
+  {
+    "functionName": "Функция экономической науки",
+    "listOfDesc": [
+      {"description":  "Познавательная"},
+      {"description":  "Методологическая"},
+      {"description":  "Образовательная"},
+      {"description":  "Методологическая"}
+    ]
+  },
+  {
+    "functionName": "Функция рынка",
+    "listOfDesc": [
+      {"description":  "Ценообразования"},
+      {"description":  "Регулирующая"},
+      {"description":  "Информационная"},
+      {"description":  "Посредническая"},
+      {"description":  "Санирующая (оздоровительная)"}
+    ]
+  },
+  {
+    "functionName": "Функция финансов",
+    "listOfDesc": [
+      {"description":  "Распределительная"},
+      {"description":  "Контрольная"},
+      {"description":  "Регулирующая"},
+      {"description":  "Стабилизирующая"}
+    ]
+  },
+  {
+    "functionName": "Функция предпринимательства",
+    "listOfDesc": [
+      {"description":  "Ресурсная"},
+      {"description":  "Творческая"},
+      {"description":  "Организационная"}
+    ]
+  },
+  {
+    "functionName": "Функция государства в экономике",
+    "listOfDesc": [
+      {"description":  "Производство общественных благ"},
+      {"description":  "Регулирование денежного обращения"},
+      {"description":  "Защита прав собственности"},
+      {"description":  "Перераспределение доходов"},
+      {"description":  "Компенсация внешних эффектов"},
+      {"description":  "Поддержка рыночной системы"}
+    ]
+  },
+  {
+    "functionName": "Функция налогов",
+    "listOfDesc": [
+      {"description":  "Фискальная"},
+      {"description":  "Распределительная"},
+      {"description":  "Социально-воспитательная"},
+      {"description":  "Антиинфляционная"},
+      {"description":  "Учетная"}
+    ]
+  },
+  {
+    "functionName": "Функция социального конфликта",
+    "listOfDesc": [
+      {"description":  "Информирование о социальной напряженности"},
+      {"description":  "Снятие напряженности в обществе"},
+      {"description":  "Стимулирование изменений"}
+    ]
+  },
+  {
+    "functionName": "Функция социальных норм",
+    "listOfDesc": [
+      {"description":  "Ориентирующая"},
+      {"description":  "Программная"},
+      {"description":  "Прогностическая"},
+      {"description":  "Регулирующая"}
+    ]
+  },
+  {
+    "functionName": "Функция политической власти",
+    "listOfDesc": [
+      {"description":  "Формирование политической системы"},
+      {"description":  "Управление"},
+      {"description":  "Конструирование типа политической системы"},
+      {"description":  "Контроль политических отношений"}
+    ]
+  },
+  {
+    "functionName": "Функция политической системы",
+    "listOfDesc": [
+      {"description":  "Определение целей развития общества"},
+      {"description":  "Интегративная"},
+      {"description":  "Контрольная"},
+      {"description":  "Политическое воспитание"},
+      {"description":  "Распределение ценностей"}
+    ]
+  },
+  {
+    "functionName": "Функция гражданского общества",
+    "listOfDesc": [
+      {"description":  "Защитная"},
+      {"description":  "Развитие политической системы"},
+      {"description":  "Регулирующая"}
+    ]
+  },
+  {
+    "functionName": "Функция политической элиты",
+    "listOfDesc": [
+      {"description":  "Стратегическая"},
+      {"description":  "Организаторская"},
+      {"description":  "Интегративная"}
+    ]
+  },
+  {
+    "functionName": "Функция политических партий",
+    "listOfDesc": [
+      {"description":  "Политическая"},
+      {"description":  "Социального представительства"},
+      {"description":  "Идеологическая"},
+      {"description":  "Политического рекрутирования"},
+      {"description":  "Электоральная"},
+      {"description":  "Воспитательная"},
+      {"description":  "Интегративная"}
+    ]
+  },
+  {
+    "functionName": "Функция СМИ",
+    "listOfDesc": [
+      {"description":  "Информационная"},
+      {"description":  "Формирование общественного мнения"},
+      {"description":  "Социализация"},
+      {"description":  "Мобилизационная"},
+      {"description":  "Общественный контроль"}
+    ]
+  },
+  {
+    "functionName": "Функция политического лидера",
+    "listOfDesc": [
+      {"description":  "Интегративная"},
+      {"description":  "Коммуникативная"},
+      {"description":  "Мобилизационная"},
+      {"description":  "Ориентационная"}
+    ]
+  },
+  {
+    "functionName": "Функция юридической ответственности",
+    "listOfDesc": [
+      {"description":  "Карательная"},
+      {"description":  "Превентивная"},
+      {"description":  "Регулятивная"},
+      {"description":  "Воспитательная"}
+    ]
+  },
+  {
+    "functionName": "Функция конституции",
+    "listOfDesc": [
+      {"description":  "Правовая"},
+      {"description":  "Политическая"},
+      {"description":  "Учредительная"},
+      {"description":  "Гуманистическая"},
+      {"description":  "Мировоззренческая"}
+    ]
+  },
+  {
+    "functionName": "Функция правоохранительных органов",
+    "listOfDesc": [
+      {"description":  "Охрана государственного строя"},
+      {"description":  "Защита прав и свобод человека"},
+      {"description":  "Борьба с преступностью"},
+      {"description":  "Укрепление законности и правопорядка"}
+    ]
+  }
+]

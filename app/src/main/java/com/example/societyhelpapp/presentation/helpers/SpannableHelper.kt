@@ -6,6 +6,7 @@ import android.text.style.ForegroundColorSpan
 import androidx.core.content.res.ResourcesCompat
 import com.example.societyhelpapp.R
 import com.example.societyhelpapp.presentation.ui.fragments.constitution.model.topic.SubtitleUI
+import com.example.societyhelpapp.presentation.ui.fragments.functions.model.topic.FunctionModel
 import com.example.societyhelpapp.presentation.ui.fragments.main.model.topic.TopicUI
 import dagger.hilt.android.qualifiers.ActivityContext
 import dagger.hilt.android.scopes.ActivityScoped
@@ -53,6 +54,20 @@ class SpannableHelper @Inject constructor(
                         Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
                     )
                 }
+            }
+        }
+        return itemsList
+    }
+
+    fun highlightFunctions(query: String, itemsList: List<FunctionModel>): List<FunctionModel> {
+        itemsList.forEach { item ->
+            item.functionName.getSpans(0, item.functionName.length, ForegroundColorSpan::class.java).forEach {
+                item.functionName.removeSpan(it)
+            }
+
+            if(item.functionName.contains(query, true)) {
+                val index = item.functionName.toString().indexOf(query, 0, true)
+                item.functionName.setSpan(spanHighlight, index, index + query.length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
             }
         }
         return itemsList

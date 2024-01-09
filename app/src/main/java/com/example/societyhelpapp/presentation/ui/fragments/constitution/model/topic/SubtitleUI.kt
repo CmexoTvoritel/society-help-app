@@ -8,5 +8,8 @@ data class SubtitleUI(
     val subtitle: Spannable,
     val listOfDesc: List<DescriptionUI>? = null
 ) {
-    constructor(subtitle: String, listOfDesc: List<DescriptionUI>?) : this(SpannableString(subtitle), listOfDesc)
+    constructor(
+        subtitle: String,
+        listOfDesc: List<DescriptionUI>?
+    ) : this(subtitle = SpannableString(subtitle), listOfDesc = listOfDesc)
 }
